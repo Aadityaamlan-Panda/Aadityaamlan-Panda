@@ -1,0 +1,2567 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aaditya Amlan Panda — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── RESET & TOKENS ─────────────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0a0a0f;
+        --bg2: #111118;
+        --bg3: #16161f;
+        --bg4: #1c1c28;
+        --card: #1a1a24;
+        --border: #2a2a3a;
+        --border2: #3a3a50;
+        --t1: #f0efe8;
+        --t2: #a8a89e;
+        --t3: #666670;
+        --teal: #2dd4a0;
+        --teal-dim: #1a7a5e;
+        --teal-bg: #0d2e22;
+        --purple: #9b8ff0;
+        --purple-dim: #5a4faa;
+        --purple-bg: #1a1830;
+        --amber: #f0a832;
+        --amber-dim: #8a5e10;
+        --amber-bg: #2a1e08;
+        --coral: #f07050;
+        --coral-dim: #8a3a20;
+        --coral-bg: #2a1208;
+        --blue: #60a8e8;
+        --blue-dim: #2a5888;
+        --blue-bg: #0a1828;
+        --display: "Syne", sans-serif;
+        --mono: "IBM Plex Mono", monospace;
+        --body: "Lora", Georgia, serif;
+        --radius: 8px;
+        --radius-lg: 14px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--t1);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.7;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* ── NOISE TEXTURE OVERLAY ──────────────────────────────────── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.5;
+      }
+
+      /* ── NAV ────────────────────────────────────────────────────── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2.5rem;
+        height: 60px;
+        background: rgba(10, 10, 15, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-logo {
+        font-family: var(--display);
+        font-size: 17px;
+        font-weight: 800;
+        color: var(--t1);
+        letter-spacing: -0.03em;
+        text-decoration: none;
+      }
+      .nav-logo span {
+        color: var(--teal);
+      }
+      .nav-tabs {
+        display: flex;
+        gap: 4px;
+      }
+      .nav-tab {
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 6px 14px;
+        border-radius: 6px;
+        border: none;
+        background: transparent;
+        color: var(--t3);
+        cursor: pointer;
+        transition: all 0.2s;
+        letter-spacing: 0.02em;
+      }
+      .nav-tab:hover {
+        color: var(--t1);
+        background: var(--bg3);
+      }
+      .nav-tab.active {
+        color: var(--teal);
+        background: var(--teal-bg);
+        border: 1px solid var(--teal-dim);
+      }
+      .nav-right {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .nav-link {
+        font-family: var(--mono);
+        font-size: 11px;
+        padding: 5px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        color: var(--t2);
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .nav-link:hover {
+        border-color: var(--teal);
+        color: var(--teal);
+      }
+
+      /* ── PAGE SECTIONS ──────────────────────────────────────────── */
+      .page {
+        display: none;
+        padding-top: 80px;
+        min-height: 100vh;
+        position: relative;
+        z-index: 1;
+      }
+      .page.active {
+        display: block;
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 2rem 5rem;
+      }
+
+      /* ── HERO ───────────────────────────────────────────────────── */
+      .hero {
+        padding: 4rem 2rem 3rem;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .hero-eyebrow {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--teal);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .hero-eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 32px;
+        height: 1px;
+        background: var(--teal);
+      }
+      .hero-name {
+        font-family: var(--display);
+        font-size: clamp(42px, 7vw, 80px);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        color: var(--t1);
+        margin-bottom: 0.5rem;
+      }
+      .hero-name .accent {
+        color: var(--teal);
+      }
+      .hero-role {
+        font-family: var(--display);
+        font-size: clamp(16px, 2.5vw, 22px);
+        font-weight: 400;
+        color: var(--t2);
+        margin-bottom: 2rem;
+        letter-spacing: -0.01em;
+      }
+      .hero-bio {
+        font-size: 17px;
+        color: var(--t2);
+        line-height: 1.75;
+        max-width: 600px;
+        margin-bottom: 2.5rem;
+      }
+      .hero-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 3rem;
+      }
+      .chip {
+        font-family: var(--mono);
+        font-size: 11px;
+        padding: 5px 12px;
+        border-radius: 20px;
+        border: 1px solid;
+        font-weight: 400;
+        transition: all 0.2s;
+      }
+      .chip-teal {
+        color: var(--teal);
+        border-color: var(--teal-dim);
+        background: var(--teal-bg);
+      }
+      .chip-purple {
+        color: var(--purple);
+        border-color: var(--purple-dim);
+        background: var(--purple-bg);
+      }
+      .chip-amber {
+        color: var(--amber);
+        border-color: var(--amber-dim);
+        background: var(--amber-bg);
+      }
+      .chip-coral {
+        color: var(--coral);
+        border-color: var(--coral-dim);
+        background: var(--coral-bg);
+      }
+      .chip-blue {
+        color: var(--blue);
+        border-color: var(--blue-dim);
+        background: var(--blue-bg);
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 4rem;
+      }
+      .btn {
+        font-family: var(--mono);
+        font-size: 13px;
+        padding: 10px 22px;
+        border-radius: 8px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-primary {
+        background: var(--teal);
+        color: #050f0c;
+        border: none;
+        font-weight: 500;
+      }
+      .btn-primary:hover {
+        background: #22b888;
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--t2);
+        border: 1px solid var(--border);
+      }
+      .btn-outline:hover {
+        border-color: var(--t2);
+        color: var(--t1);
+      }
+
+      /* ── STATS ROW ──────────────────────────────────────────────── */
+      .stats-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        margin-bottom: 4rem;
+      }
+      .stat-item {
+        padding: 1.5rem;
+        border-right: 1px solid var(--border);
+        text-align: center;
+      }
+      .stat-item:last-child {
+        border-right: none;
+      }
+      .stat-num {
+        font-family: var(--display);
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--t1);
+        line-height: 1;
+      }
+      .stat-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--t3);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: 4px;
+      }
+
+      /* ── SECTION HEADERS ────────────────────────────────────────── */
+      .sec-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 2rem;
+      }
+      .sec-tag {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--teal);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .sec-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      /* ── ABOUT PAGE ─────────────────────────────────────────────── */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .about-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+      }
+      .about-card h3 {
+        font-family: var(--display);
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--t1);
+        margin-bottom: 0.75rem;
+      }
+      .about-card p {
+        font-size: 14px;
+        color: var(--t2);
+        line-height: 1.7;
+      }
+      .about-card ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .about-card ul li {
+        font-size: 13px;
+        color: var(--t2);
+        display: flex;
+        gap: 8px;
+        align-items: start;
+      }
+      .about-card ul li::before {
+        content: "▸";
+        color: var(--teal);
+        flex-shrink: 0;
+        font-size: 11px;
+        margin-top: 3px;
+      }
+      .about-full {
+        grid-column: 1/-1;
+      }
+
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .course-tag {
+        font-family: var(--mono);
+        font-size: 11px;
+        padding: 5px 10px;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        color: var(--t3);
+        text-align: center;
+      }
+      .course-tag.ongoing {
+        border-color: var(--teal-dim);
+        color: var(--teal);
+      }
+
+      /* ── SKILLS PAGE ────────────────────────────────────────────── */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .skill-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+      }
+      .skill-card-head {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--t3);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .tag-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .tag {
+        font-family: var(--mono);
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 5px;
+        border: 1px solid var(--border);
+        color: var(--t2);
+        background: var(--bg3);
+        transition: all 0.2s;
+      }
+      .tag:hover {
+        border-color: var(--border2);
+        color: var(--t1);
+      }
+      .tag-hi-teal {
+        color: var(--teal);
+        border-color: var(--teal-dim);
+        background: var(--teal-bg);
+        font-weight: 500;
+      }
+      .tag-hi-purple {
+        color: var(--purple);
+        border-color: var(--purple-dim);
+        background: var(--purple-bg);
+        font-weight: 500;
+      }
+      .tag-hi-amber {
+        color: var(--amber);
+        border-color: var(--amber-dim);
+        background: var(--amber-bg);
+        font-weight: 500;
+      }
+
+      /* skill bars */
+      .skill-bars {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 0.5rem;
+      }
+      .skill-bar-row {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .skill-bar-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .skill-bar-name {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--t2);
+      }
+      .skill-bar-pct {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--t3);
+      }
+      .skill-bar-track {
+        height: 3px;
+        background: var(--bg4);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .skill-bar-fill {
+        height: 100%;
+        border-radius: 2px;
+        background: var(--teal);
+        transition: width 1s ease;
+      }
+      .skill-bar-fill.purple {
+        background: var(--purple);
+      }
+      .skill-bar-fill.amber {
+        background: var(--amber);
+      }
+
+      /* ── PROJECTS PAGE ──────────────────────────────────────────── */
+      .project-filters {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+      .filter-btn {
+        font-family: var(--mono);
+        font-size: 11px;
+        padding: 5px 14px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--t3);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filter-btn.active,
+      .filter-btn:hover {
+        border-color: var(--teal);
+        color: var(--teal);
+        background: var(--teal-bg);
+      }
+
+      .proj-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .proj-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+        display: flex;
+        flex-direction: column;
+      }
+      .proj-card:hover {
+        border-color: var(--border2);
+        transform: translateY(-2px);
+      }
+      .proj-card.featured {
+        grid-column: 1/-1;
+        border-color: var(--teal-dim);
+      }
+      .proj-card.featured:hover {
+        border-color: var(--teal);
+      }
+      .proj-header {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .proj-dot-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .proj-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .dot-teal {
+        background: var(--teal);
+      }
+      .dot-purple {
+        background: var(--purple);
+      }
+      .dot-amber {
+        background: var(--amber);
+      }
+      .dot-coral {
+        background: var(--coral);
+      }
+      .dot-blue {
+        background: var(--blue);
+      }
+      .proj-name {
+        font-family: var(--display);
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--t1);
+        line-height: 1.2;
+      }
+      .proj-card.featured .proj-name {
+        font-size: 18px;
+      }
+      .proj-meta {
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--t3);
+        margin-bottom: 10px;
+      }
+      .proj-desc {
+        font-size: 13px;
+        color: var(--t2);
+        line-height: 1.65;
+        flex: 1;
+      }
+      .proj-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-top: 12px;
+      }
+      .proj-tag {
+        font-family: var(--mono);
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        border: 1px solid;
+      }
+      .proj-metrics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-top: 12px;
+        margin-top: 12px;
+        border-top: 1px solid var(--border);
+      }
+      .proj-metric {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--t3);
+      }
+      .proj-metric span {
+        color: var(--teal);
+        font-weight: 500;
+      }
+
+      .proj-card.hidden {
+        display: none;
+      }
+
+      /* ── EXPERIENCE PAGE ────────────────────────────────────────── */
+      .timeline {
+        position: relative;
+        padding-left: 28px;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        bottom: 0;
+        width: 1px;
+        background: var(--border);
+      }
+      .tl-item {
+        position: relative;
+        margin-bottom: 2rem;
+      }
+      .tl-dot {
+        position: absolute;
+        left: -32px;
+        top: 6px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--teal);
+        border: 2px solid var(--bg);
+        box-shadow: 0 0 0 3px var(--teal-dim);
+      }
+      .tl-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+      }
+      .tl-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 4px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tl-title {
+        font-family: var(--display);
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--t1);
+      }
+      .tl-period {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--t3);
+      }
+      .tl-org {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--teal);
+        margin-bottom: 12px;
+      }
+      .tl-pts {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .tl-pt {
+        font-size: 13px;
+        color: var(--t2);
+        line-height: 1.6;
+        display: flex;
+        gap: 10px;
+        align-items: start;
+      }
+      .tl-bar {
+        width: 2px;
+        min-height: 18px;
+        background: var(--border2);
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+
+      /* ── CODING PAGE ────────────────────────────────────────────── */
+      .coding-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 2rem;
+      }
+      .coding-stat {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .coding-stat-num {
+        font-family: var(--display);
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--t1);
+        line-height: 1;
+      }
+      .coding-stat-label {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--t3);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 6px;
+      }
+      .coding-stat-sub {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--teal);
+        margin-top: 4px;
+      }
+
+      .diff-bars {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .diff-row {
+        display: grid;
+        grid-template-columns: 80px 1fr 50px;
+        align-items: center;
+        gap: 12px;
+      }
+      .diff-label {
+        font-family: var(--mono);
+        font-size: 12px;
+      }
+      .diff-label.easy {
+        color: #2dd4a0;
+      }
+      .diff-label.medium {
+        color: var(--amber);
+      }
+      .diff-label.hard {
+        color: var(--coral);
+      }
+      .diff-track {
+        height: 4px;
+        background: var(--bg4);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .diff-fill {
+        height: 100%;
+        border-radius: 2px;
+        transition: width 1s ease;
+      }
+      .diff-fill.easy {
+        background: #2dd4a0;
+      }
+      .diff-fill.medium {
+        background: var(--amber);
+      }
+      .diff-fill.hard {
+        background: var(--coral);
+      }
+      .diff-count {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--t3);
+        text-align: right;
+      }
+
+      .lang-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 1.5rem;
+      }
+      .lang-card {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 12px;
+        text-align: center;
+      }
+      .lang-name {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--t2);
+        margin-bottom: 4px;
+      }
+      .lang-pct {
+        font-family: var(--display);
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--teal);
+      }
+
+      /* contribution heatmap */
+      .contrib-section {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+      }
+      .contrib-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px;
+      }
+      .cc {
+        width: 11px;
+        height: 11px;
+        border-radius: 2px;
+        background: var(--bg4);
+      }
+      .cc.l1 {
+        background: #0d3d2a;
+      }
+      .cc.l2 {
+        background: #145c3e;
+      }
+      .cc.l3 {
+        background: #1a8055;
+      }
+      .cc.l4 {
+        background: #2dd4a0;
+      }
+      .contrib-legend {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 10px;
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--t3);
+      }
+      .cl-sq {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        border-radius: 2px;
+      }
+
+      /* update notice box */
+      .update-box {
+        background: var(--amber-bg);
+        border: 1px solid var(--amber-dim);
+        border-radius: var(--radius);
+        padding: 12px 16px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--amber);
+        margin-bottom: 1.5rem;
+        display: flex;
+        gap: 10px;
+        align-items: start;
+      }
+      .update-box::before {
+        content: "✦ ";
+        flex-shrink: 0;
+      }
+
+      /* ── CONTACT PAGE ───────────────────────────────────────────── */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .contact-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+        text-decoration: none;
+        transition: all 0.2s;
+        display: block;
+      }
+      .contact-card:hover {
+        border-color: var(--border2);
+        transform: translateY(-2px);
+      }
+      .cc-icon {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+      .cc-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--t3);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 4px;
+      }
+      .cc-value {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--t1);
+        font-weight: 500;
+      }
+      .cc-sub {
+        font-size: 12px;
+        color: var(--t3);
+        margin-top: 3px;
+      }
+
+      /* ── FOOTER ─────────────────────────────────────────────────── */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 2rem;
+        text-align: center;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--t3);
+        position: relative;
+        z-index: 1;
+      }
+      footer span {
+        color: var(--teal);
+      }
+
+      /* ── ANIMATIONS ─────────────────────────────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .page.active .hero,
+      .page.active .container > * {
+        animation: fadeUp 0.5s ease both;
+      }
+      .page.active .container > *:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .page.active .container > *:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .page.active .container > *:nth-child(3) {
+        animation-delay: 0.15s;
+      }
+      .page.active .container > *:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+      .page.active .container > *:nth-child(5) {
+        animation-delay: 0.25s;
+      }
+
+      /* ── RESPONSIVE ─────────────────────────────────────────────── */
+      @media (max-width: 768px) {
+        nav {
+          padding: 0 1rem;
+        }
+        .nav-tabs {
+          display: none;
+        }
+        .about-grid,
+        .skills-grid,
+        .proj-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .proj-card.featured {
+          grid-column: auto;
+        }
+        .stats-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat-item:nth-child(2) {
+          border-right: none;
+        }
+        .coding-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .lang-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .hero {
+          padding: 2rem 1rem;
+        }
+        .container {
+          padding: 1.5rem 1rem 4rem;
+        }
+        .course-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a class="nav-logo" href="#" onclick="showPage('home')"
+        >AAP<span>.</span></a
+      >
+      <div class="nav-tabs">
+        <button class="nav-tab active" onclick="showPage('home')">home</button>
+        <button class="nav-tab" onclick="showPage('about')">about</button>
+        <button class="nav-tab" onclick="showPage('skills')">skills</button>
+        <button class="nav-tab" onclick="showPage('projects')">projects</button>
+        <button class="nav-tab" onclick="showPage('experience')">
+          experience
+        </button>
+        <button class="nav-tab" onclick="showPage('coding')">coding</button>
+        <button class="nav-tab" onclick="showPage('contact')">contact</button>
+      </div>
+      <div class="nav-right">
+        <a
+          class="nav-link"
+          href="https://github.com/Aadityaamlan-Panda"
+          target="_blank"
+          >GitHub</a
+        >
+        <a
+          class="nav-link"
+          href="https://linkedin.com/in/aadityaamlan-panda-a07403a1"
+          target="_blank"
+          >LinkedIn</a
+        >
+        <!-- UPDATE: Replace href with your resume PDF link -->
+        <a
+          class="nav-link"
+          href="Resume_Master.pdf"
+          target="_blank"
+          style="border-color: var(--teal-dim); color: var(--teal)"
+          >résumé ↗</a
+        >
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- HOME PAGE -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="page active" id="page-home">
+      <div class="hero">
+        <div class="hero-eyebrow">Chemical Engineer & Developer</div>
+        <h1 class="hero-name">
+          Aaditya<br />Amlan <span class="accent">Panda</span>
+        </h1>
+        <p class="hero-role">
+          B.Tech Chemical Engineering · IIT Kanpur · Class of 2026
+        </p>
+        <p class="hero-bio">
+          I work at the intersection of chemical process design and software —
+          building Aspen Plus simulations, ML pipelines, NLP tools, and
+          numerical solvers. I believe the most interesting problems live
+          between disciplines.
+        </p>
+        <div class="hero-chips">
+          <span class="chip chip-teal">Process Simulation</span>
+          <span class="chip chip-purple">Machine Learning</span>
+          <span class="chip chip-amber">Numerical Methods</span>
+          <span class="chip chip-coral">NLP / AI</span>
+          <span class="chip chip-blue">Control Systems</span>
+          <span class="chip chip-teal">Economic Analysis</span>
+          <span class="chip chip-purple">Python</span>
+          <span class="chip chip-amber">MATLAB</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="showPage('projects')">
+            View Projects →
+          </button>
+          <button class="btn btn-outline" onclick="showPage('about')">
+            About Me
+          </button>
+          <a
+            class="btn btn-outline"
+            href="https://github.com/Aadityaamlan-Panda"
+            target="_blank"
+            >GitHub ↗</a
+          >
+        </div>
+
+        <div class="stats-strip">
+          <div class="stat-item">
+            <div class="stat-num" style="color: var(--teal)">13+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" style="color: var(--purple)">9+</div>
+            <div class="stat-label">Publications</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" style="color: var(--amber)">3×</div>
+            <div class="stat-label">Excellence Award</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" style="color: var(--coral)">4429</div>
+            <div class="stat-label">JEE Adv AIR</div>
+          </div>
+        </div>
+
+        <!-- Quick project highlights -->
+        <div class="sec-head">
+          <span class="sec-tag">// featured work</span>
+          <div class="sec-line"></div>
+        </div>
+        <div class="proj-grid">
+          <div class="proj-card featured">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-teal"></div>
+                <div class="proj-name">Methyl Benzoate Process Design</div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-teal">Aspen Plus</span>
+                <span class="proj-tag chip-teal">TEMA</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CHE453 Capstone · Prof. Raghavendra Ragipani · Aug 2025 – Ongoing
+            </div>
+            <div class="proj-desc">
+              Full industrial design of a continuous methyl benzoate production
+              plant. UNIQUAC thermodynamic model, four-column distillation,
+              shell-and-tube HX, pinch analysis, Rankine cogeneration, and
+              techno-economic sensitivity analysis.
+            </div>
+            <div class="proj-metrics">
+              <div class="proj-metric">Recovery <span>98%+</span></div>
+              <div class="proj-metric">Energy Reduction <span>50%</span></div>
+              <div class="proj-metric">Payback <span>~3 yr</span></div>
+              <div class="proj-metric">Team <span>8 members</span></div>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-purple"></div>
+                <div class="proj-name">ML-PUF Response Modeling</div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-purple">SVM</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CS771 · Prof. Purushottam Kar · Mar–Apr 2025
+            </div>
+            <div class="proj-desc">
+              85-D feature engineering + polynomial kernel SVM for Multi Level
+              PUF prediction. Reached 100% accuracy on XOR Arbiter PUF
+              challenges.
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-amber"></div>
+                <div class="proj-name">ML Financial Risk Analytics</div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-amber">FinBERT</span>
+              </div>
+            </div>
+            <div class="proj-meta">Self Project · Aug–Sep 2025</div>
+            <div class="proj-desc">
+              Random Forest + FinBERT pipeline with 60%+ directional accuracy.
+              Full VaR, Sharpe ratio, and regulatory compliance Streamlit
+              dashboard.
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 1.5rem">
+          <button class="btn btn-outline" onclick="showPage('projects')">
+            All 13 Projects →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ABOUT PAGE -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="page" id="page-about">
+      <div class="container">
+        <div class="sec-head">
+          <span class="sec-tag">// about me</span>
+          <div class="sec-line"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card about-full">
+            <p
+              style="
+                font-size: 16px;
+                color: var(--t1);
+                line-height: 1.8;
+                margin-bottom: 1rem;
+              "
+            >
+              I'm a final-year Chemical Engineering student at IIT Kanpur —
+              equally at home writing MATLAB solvers for coupled PDEs and
+              building full-stack Python applications. My work spans rigorous
+              industrial process design (Aspen Plus, pinch analysis, reactor
+              engineering) to deploying machine learning pipelines and NLP
+              tools.
+            </p>
+            <p style="font-size: 15px; color: var(--t2); line-height: 1.75">
+              Beyond engineering, I'm a published poet and translator —
+              co-authoring 9+ international anthologies and translating Odia
+              literature to English. I also represent IIT Kanpur in competitive
+              weightlifting, having won silver at Udghosh 2024 and the Kanpur
+              District Championship.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3>Education</h3>
+            <ul>
+              <li>
+                B.Tech Chemical Engineering, IIT Kanpur (2022–2026) — 9.3 CPI
+              </li>
+              <li>ISC (XII), St. Joseph's Convent HSS, Sambalpur — 96.6%</li>
+              <li>ICSE (X), St. Joseph's Convent HSS, Sambalpur — 95.6%</li>
+            </ul>
+          </div>
+
+          <div class="about-card">
+            <h3>Scholarships & Awards</h3>
+            <ul>
+              <li>Academic Excellence Award — 3× (2022–2024), IIT Kanpur</li>
+              <li>
+                Arakere & Karen Vasudev Scholarship 2025 — highest CPI among 110
+                ChE students
+              </li>
+              <li>JEE Advanced 2022 — All India Rank 4429 / 2,00,000</li>
+              <li>
+                Pratibha Scholarship (Aditya Birla Group) — 2022–23, 23–24,
+                24–25
+              </li>
+              <li>International Youth Icon Award 2022–23, SLF</li>
+              <li>
+                Rank 7 globally — Storymirror World Writing Championship 2023
+              </li>
+            </ul>
+          </div>
+
+          <div class="about-card">
+            <h3>Positions of Responsibility</h3>
+            <ul>
+              <li>
+                Secretary, UG Academics, AnC Council — Jun 2023 – Apr 2024
+              </li>
+              <li>Designed the new Freshers' Handbook for IIT Kanpur</li>
+              <li>
+                Sports Secretary, Weightlifting, GnS Council — Jul 2023 – Apr
+                2024
+              </li>
+              <li>Organised competitions and workshops for 50+ students</li>
+            </ul>
+          </div>
+
+          <div class="about-card">
+            <h3>Extracurricular</h3>
+            <ul>
+              <li>
+                Weightlifting Team, IIT Kanpur — 56th & 57th Inter-IIT Sports
+                Meet
+              </li>
+              <li>Silver Medal, Udghosh 2024 (IITK Sports Festival)</li>
+              <li>
+                Silver Medal, Kanpur District Weightlifting Championship 2024
+              </li>
+              <li>Co-authored 9+ internationally published anthologies</li>
+              <li>
+                Literary Captain at Storymirror; Top 50 at Writer's Club,
+                Greythoughts Info
+              </li>
+              <li>
+                Translated Odia work "Paranani" to English — Matruakshar
+                magazine
+              </li>
+            </ul>
+          </div>
+
+          <div class="about-card about-full">
+            <h3 style="margin-bottom: 1rem">Relevant Courses</h3>
+            <div class="course-grid">
+              <span class="course-tag ongoing">Applied Prob. & Stats ✦</span>
+              <span class="course-tag ongoing"
+                >Intro to Machine Learning ✦</span
+              >
+              <span class="course-tag">Computational Methods</span>
+              <span class="course-tag">Real Analysis</span>
+              <span class="course-tag">Ordinary Diff. Equations</span>
+              <span class="course-tag">Process Dynamics</span>
+              <span class="course-tag">Several Variable Calculus</span>
+              <span class="course-tag">Linear Algebra</span>
+              <span class="course-tag">Bioprocess Engineering</span>
+              <span class="course-tag">Microeconomics</span>
+              <span class="course-tag">ChE Thermodynamics</span>
+              <span class="course-tag">Rheology of Fluids</span>
+              <span class="course-tag">Transport Phenomena</span>
+              <span class="course-tag">Fluid Mechanics</span>
+              <span class="course-tag">Process Calculation</span>
+              <span class="course-tag">Mass Transfer</span>
+              <span class="course-tag">Reaction Engineering</span>
+              <span class="course-tag">Process Design</span>
+              <span class="course-tag">Heat Transfer</span>
+              <span class="course-tag">Economics & Public Policy</span>
+            </div>
+            <p
+              style="
+                font-family: var(--mono);
+                font-size: 11px;
+                color: var(--teal);
+                margin-top: 10px;
+              "
+            >
+              ✦ ongoing
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- SKILLS PAGE -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="page" id="page-skills">
+      <div class="container">
+        <div class="sec-head">
+          <span class="sec-tag">// technical skills</span>
+          <div class="sec-line"></div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-card-head">Languages & Tools</div>
+            <div class="tag-cloud">
+              <span class="tag tag-hi-purple">Python</span>
+              <span class="tag tag-hi-purple">C / C++</span>
+              <span class="tag tag-hi-purple">MATLAB</span>
+              <span class="tag">SQL</span>
+              <span class="tag">LaTeX</span>
+              <span class="tag">Git / GitHub</span>
+              <span class="tag">HTML / CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Simulink</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-head">Process Simulation & Design</div>
+            <div class="tag-cloud">
+              <span class="tag tag-hi-teal">Aspen Plus</span>
+              <span class="tag tag-hi-teal">Aspen EDR</span>
+              <span class="tag">Pinch Analysis</span>
+              <span class="tag">TEMA HX Design</span>
+              <span class="tag">PFR / CSTR Modeling</span>
+              <span class="tag">Distillation Design</span>
+              <span class="tag">Cogeneration (Rankine)</span>
+              <span class="tag">VLE / Azeotrope Analysis</span>
+              <span class="tag">McCabe-Thiele</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-head">Python Libraries</div>
+            <div class="tag-cloud">
+              <span class="tag">NumPy</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Matplotlib</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">NLTK</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">MediaPipe</span>
+              <span class="tag">NetworkX</span>
+              <span class="tag">Pyvis</span>
+              <span class="tag">Requests</span>
+              <span class="tag">PyDub</span>
+              <span class="tag">Tkinter</span>
+              <span class="tag">pygame</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-head">MATLAB & Numerical Methods</div>
+            <div class="tag-cloud">
+              <span class="tag tag-hi-amber">ode45 / ode78 / ode15s</span>
+              <span class="tag">bvp4c</span>
+              <span class="tag">pdepe</span>
+              <span class="tag">fmincon</span>
+              <span class="tag">lsqnonlin</span>
+              <span class="tag">FDM / MOL</span>
+              <span class="tag">Runge-Kutta 4</span>
+              <span class="tag">Ziegler-Nichols</span>
+              <span class="tag">Tyreus-Luyben</span>
+              <span class="tag">Skogestad IMC</span>
+              <span class="tag">Separation of Variables</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-head">Machine Learning & AI</div>
+            <div class="tag-cloud">
+              <span class="tag">SVM / LinearSVC</span>
+              <span class="tag">Random Forest</span>
+              <span class="tag">FinBERT (NLP)</span>
+              <span class="tag">TF-IDF</span>
+              <span class="tag">Cosine Similarity</span>
+              <span class="tag">Feature Engineering</span>
+              <span class="tag">RAG Pipelines</span>
+              <span class="tag">Local LLM (Ollama)</span>
+              <span class="tag">Cohere API</span>
+              <span class="tag">Azure Cognitive APIs</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-head">Domain Knowledge</div>
+            <div class="tag-cloud">
+              <span class="tag">Thermodynamics (UNIQUAC / NRTL / PR)</span>
+              <span class="tag">PID Control</span>
+              <span class="tag">DCF Analysis (NPV / IRR)</span>
+              <span class="tag">SOYD / DDB Depreciation</span>
+              <span class="tag">VaR / Sharpe Ratio</span>
+              <span class="tag">Reaction Kinetics</span>
+              <span class="tag">PageRank / Dijkstra's</span>
+              <span class="tag">Google APIs (TTS / ASR)</span>
+              <span class="tag">FFmpeg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proficiency bars -->
+        <div class="sec-head" style="margin-top: 2rem">
+          <span class="sec-tag">// proficiency</span>
+          <div class="sec-line"></div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-card-head">Core Languages</div>
+            <div class="skill-bars" id="lang-bars">
+              <div class="skill-bar-row">
+                <div class="skill-bar-label">
+                  <span class="skill-bar-name">Python</span
+                  ><span class="skill-bar-pct">95%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div
+                    class="skill-bar-fill"
+                    style="width: 0"
+                    data-w="95%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-bar-row">
+                <div class="skill-bar-label">
+                  <span class="skill-bar-name">MATLAB</span
+                  ><span class="skill-bar-pct">88%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div
+                    class="skill-bar-fill"
+                    style="width: 0"
+                    data-w="88%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-bar-row">
+                <div class="skill-bar-label">
+                  <span class="skill-bar-name">C / C++</span
+                  ><span class="skill-bar-pct">75%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div
+                    class="skill-bar-fill"
+                    style="width: 0"
+                    data-w="75%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-bar-row">
+                <div class="skill-bar-label">
+                  <span class="skill-bar-name">HTML / CSS / JS</span
+                  ><span class="skill-bar-pct">70%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div
+                    class="skill-bar-fill"
+                    style="width: 0"
+                    data-w="70%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-head">Domain Expertise</div>
+            <div class="skill-bars">
+              <div class="skill-bar-row">
+                <div class="skill-bar-label">
+                  <span class="skill-bar-name">Process Simulation</span
+                  ><span class="skill-bar-pct">92%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div
+                    class="skill-bar-fill purple"
+                    style="width: 0"
+                    data-w="92%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-bar-row">
+                <div class="skill-bar-label">
+                  <span class="skill-bar-name">Machine Learning</span
+                  ><span class="skill-bar-pct">82%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div
+                    class="skill-bar-fill purple"
+                    style="width: 0"
+                    data-w="82%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-bar-row">
+                <div class="skill-bar-label">
+                  <span class="skill-bar-name">Numerical Methods</span
+                  ><span class="skill-bar-pct">85%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div
+                    class="skill-bar-fill purple"
+                    style="width: 0"
+                    data-w="85%"
+                  ></div>
+                </div>
+              </div>
+              <div class="skill-bar-row">
+                <div class="skill-bar-label">
+                  <span class="skill-bar-name">Control Systems</span
+                  ><span class="skill-bar-pct">78%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div
+                    class="skill-bar-fill purple"
+                    style="width: 0"
+                    data-w="78%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- PROJECTS PAGE -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="page" id="page-projects">
+      <div class="container">
+        <div class="sec-head">
+          <span class="sec-tag">// all projects</span>
+          <div class="sec-line"></div>
+        </div>
+
+        <div class="project-filters">
+          <button
+            class="filter-btn active"
+            onclick="filterProjects('all', this)"
+          >
+            All (13)
+          </button>
+          <button class="filter-btn" onclick="filterProjects('process', this)">
+            Process Engineering
+          </button>
+          <button class="filter-btn" onclick="filterProjects('ml', this)">
+            Machine Learning
+          </button>
+          <button class="filter-btn" onclick="filterProjects('nlp', this)">
+            NLP / AI
+          </button>
+          <button class="filter-btn" onclick="filterProjects('control', this)">
+            Control Systems
+          </button>
+          <button class="filter-btn" onclick="filterProjects('finance', this)">
+            Finance
+          </button>
+        </div>
+
+        <div class="proj-grid" id="proj-grid">
+          <div class="proj-card featured" data-cat="process">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-teal"></div>
+                <div class="proj-name" style="font-size: 17px">
+                  Methyl Benzoate Process Design — Capstone
+                </div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-teal">Aspen Plus</span
+                ><span class="proj-tag chip-teal">TEMA</span
+                ><span class="proj-tag chip-teal">Pinch</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CHE453 · Prof. Raghavendra Ragipani · Aug 2025 – Ongoing ·
+              8-member team
+            </div>
+            <div class="proj-desc">
+              Full industrial design of a continuous methyl benzoate plant via
+              esterification of benzoic acid with methanol (HCl-catalysed).
+              UNIQUAC thermodynamic model selected by fitting NIST VLE datasets;
+              azeotrope analysis confirmed separation feasibility. Two
+              four-column distillation sequences compared; Method 2 selected for
+              lower peak reboiler duty. Shell-and-tube HX designed per TEMA
+              standards, validated against Aspen EDR. Pinch analysis for HEN
+              (ΔT_min = 10°C). Rankine cogeneration for on-site power. Turbulent
+              PFR with recycle for >99% overall conversion.
+            </div>
+            <div class="proj-metrics">
+              <div class="proj-metric">Recovery <span>98%+</span></div>
+              <div class="proj-metric">Energy Cut <span>50%</span></div>
+              <div class="proj-metric">Payback <span>~3 yr</span></div>
+            </div>
+          </div>
+
+          <div class="proj-card featured" data-cat="process control">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-amber"></div>
+                <div class="proj-name" style="font-size: 17px">
+                  Ethyl Benzene Process Optimisation
+                </div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-amber">MATLAB</span
+                ><span class="proj-tag chip-amber">fmincon</span
+                ><span class="proj-tag chip-amber">Control</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CHE352 · Prof. Nitin Kaistha · Mar–Apr 2025
+            </div>
+            <div class="proj-desc">
+              End-to-end optimisation: static sensitivity analysis → MATLAB
+              fmincon achieving 47.6% TAC reduction. Three-column distillation
+              with heat integration for 3-year payback at 99.9 kmol/h.
+              Dual-tuning control (Ziegler-Nichols + Tyreus-Luyben). Full
+              material and energy balance validation.
+            </div>
+            <div class="proj-metrics">
+              <div class="proj-metric">TAC Reduction <span>47.6%</span></div>
+              <div class="proj-metric">Capacity <span>99.9 kmol/h</span></div>
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="ml finance">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-amber"></div>
+                <div class="proj-name">ML Financial Risk Analytics</div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-purple">Python</span
+                ><span class="proj-tag chip-amber">FinBERT</span>
+              </div>
+            </div>
+            <div class="proj-meta">Self Project · Aug–Sep 2025</div>
+            <div class="proj-desc">
+              Random Forest + FinBERT sentiment pipeline — 60%+ directional
+              accuracy on real market data. Comprehensive risk: VaR, Sharpe
+              ratio, regulatory compliance in a Streamlit dashboard. Feature
+              engineering: SMA, volatility, live news sentiment. Secure API
+              management and deployment-ready codebase.
+            </div>
+            <div class="proj-metrics">
+              <div class="proj-metric">Accuracy <span>60%+</span></div>
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="ml">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-purple"></div>
+                <div class="proj-name">ML-PUF Response Modeling with SVM</div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-purple">SVM</span
+                ><span class="proj-tag chip-purple">Python</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CS771 · Prof. Purushottam Kar · Mar–Apr 2025
+            </div>
+            <div class="proj-desc">
+              End-to-end ML pipeline for Multi Level PUF (two Arbiter XOR)
+              response prediction from 8-bit challenges. 85-D feature set,
+              polynomial kernel (deg-2) SVM, 100% accuracy. Framed
+              delay-recovery as linear system; valid non-negative delay vectors
+              for 64-bit Arbiter PUF.
+            </div>
+            <div class="proj-metrics">
+              <div class="proj-metric">Accuracy <span>100%</span></div>
+              <div class="proj-metric">Feature dims <span>85-D</span></div>
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="finance">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-coral"></div>
+                <div class="proj-name">
+                  Profitability Analysis of a Manufacturing Plant
+                </div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-amber">Python</span
+                ><span class="proj-tag chip-amber">DCF</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CHE352 · Prof. Nitin Kaistha · Mar–Apr 2025
+            </div>
+            <div class="proj-desc">
+              SOYD and DDB depreciation for tax-optimised asset valuation. Full
+              DCF: NPV, IRR, payback period. Visual dashboards for plant cash
+              flows and NPV sensitivity curves. Flexible interface for
+              depreciation selection and scenario analysis.
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="nlp">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-purple"></div>
+                <div class="proj-name">
+                  Local AI Chat Interface with Source Integration
+                </div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-purple">LLM</span
+                ><span class="proj-tag chip-purple">RAG</span>
+              </div>
+            </div>
+            <div class="proj-meta">Self Project · Jul–Aug 2025</div>
+            <div class="proj-desc">
+              Tkinter chatbot with Chat, Search, and AI+RAG modes. Ollama local
+              LLM inference; NLTK intent router across Wikipedia, arXiv,
+              Wolfram, news, weather, YouTube, and images. Full retrieval
+              pipeline: intent → source → evidence → Markdown-to-HTML. Threaded
+              I/O with pygame audio.
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="process">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-blue"></div>
+                <div class="proj-name">
+                  Bacterial Chemotaxis — Keller-Segel Model
+                </div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-amber">MATLAB</span
+                ><span class="proj-tag chip-amber">PDE</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CHE497 · Prof. Akash Choudhary · Oct–Nov 2024
+            </div>
+            <div class="proj-desc">
+              Coupled PDE systems for bacterial concentration dynamics against
+              ammonia gradients. Keller-Segel model via RK4. Analytical
+              solutions by separation of variables; FDM validation. Method of
+              Lines with ode45/ode78 for numerical stability.
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="control">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-blue"></div>
+                <div class="proj-name">
+                  Three-Tank Control System Optimisation
+                </div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-amber">MATLAB</span
+                ><span class="proj-tag chip-amber">PID</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CHE381 · Prof. Ishan Bajaj · Oct–Nov 2024
+            </div>
+            <div class="proj-desc">
+              PID framework minimising IAE — achieved 2.4557. Compared
+              Ziegler-Nichols, Skogestad IMC, Robust Response Time on three-tank
+              cascade. Classical PI improved 84% via fine-tuning (gain
+              0.03→0.24). Optimised PID delivers 4× better performance vs
+              classical PI.
+            </div>
+            <div class="proj-metrics">
+              <div class="proj-metric">IAE <span>2.4557</span></div>
+              <div class="proj-metric">Improvement <span>4×</span></div>
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="nlp">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-coral"></div>
+                <div class="proj-name">
+                  Interactive NLP Concept Mapping Tool
+                </div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-purple">NLP</span
+                ><span class="proj-tag chip-purple">Python</span>
+              </div>
+            </div>
+            <div class="proj-meta">Self Project · Dec 2024–Jan 2025</div>
+            <div class="proj-desc">
+              Streamlit app for dynamic concept graph visualisation. NLTK
+              tokenisation, TF-IDF, cosine similarity for directed semantic
+              graphs. PageRank and Dijkstra's for node scoring. Pyvis
+              interactive networks with physics controls and multi-paragraph
+              mapping.
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="process">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-teal"></div>
+                <div class="proj-name">
+                  Experimental Determination of Reaction Order
+                </div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-teal">Kinetics</span
+                ><span class="proj-tag chip-teal">Python</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CHE331 · Prof. Raj Ganesh S. Pala · Oct–Nov 2024
+            </div>
+            <div class="proj-desc">
+              Reaction order of methylene blue photo-degradation via H₂O₂.
+              Multi-order kinetic modelling — R² = 0.9329 for zeroth order.
+              Minute-by-minute spectrophotometry. Demonstrated order shift from
+              first→zeroth as [H₂O₂] decreases.
+            </div>
+            <div class="proj-metrics">
+              <div class="proj-metric">R² <span>0.9329</span></div>
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="nlp">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-coral"></div>
+                <div class="proj-name">Multilingual Video Dubbing Tool</div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-coral">Python</span
+                ><span class="proj-tag chip-coral">FFmpeg</span>
+              </div>
+            </div>
+            <div class="proj-meta">Self Project · Jun–Jul 2024</div>
+            <div class="proj-desc">
+              Streamlit app with STT, Google Translate, and TTS. PyDub + FFmpeg
+              pipeline: silence detection, segmentation, time-stretching for
+              video sync. Google Speech-to-Text with fallbacks. Automated SRT
+              subtitle generation.
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="process">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-teal"></div>
+                <div class="proj-name">McCabe-Thiele Distillation Analysis</div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-teal">Python</span
+                ><span class="proj-tag chip-teal">VLE</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CHE213 · Prof. Soumik Das · Mar–Apr 2024
+            </div>
+            <div class="proj-desc">
+              McCabe-Thiele graphical method for multi-section columns with side
+              stream. Experimental VLE data fitted with advanced curve fitting.
+              Automated tray calculation with visualisation; optimal reflux
+              ratio determination.
+            </div>
+          </div>
+
+          <div class="proj-card" data-cat="finance process">
+            <div class="proj-header">
+              <div class="proj-dot-row">
+                <div class="proj-dot dot-amber"></div>
+                <div class="proj-name">
+                  Chemical Industry Feasibility Analysis
+                </div>
+              </div>
+              <div class="proj-tags">
+                <span class="proj-tag chip-amber">Economic Analysis</span>
+              </div>
+            </div>
+            <div class="proj-meta">
+              CHE261 · Prof. Raghavendra Ragipani · Mar–Apr 2024
+            </div>
+            <div class="proj-desc">
+              Design, synthesis, and market analysis of industrial chemicals.
+              Economic feasibility and profit margin analysis. Reactor sizing
+              (578 L), capacity up to 1000 kg/day, capex ~$50k. Import/export
+              data for competitive strategy.
+            </div>
+            <div class="proj-metrics">
+              <div class="proj-metric">Reactor <span>578 L</span></div>
+              <div class="proj-metric">Capacity <span>1000 kg/day</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- EXPERIENCE PAGE -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="page" id="page-experience">
+      <div class="container">
+        <div class="sec-head">
+          <span class="sec-tag">// work experience</span>
+          <div class="sec-line"></div>
+        </div>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div class="tl-title">Student Mentor Intern</div>
+                <div class="tl-period">Oct 2024 – Jan 2025</div>
+              </div>
+              <div class="tl-org">
+                Rankguru Technology Solutions Private Limited
+              </div>
+              <ul class="tl-pts">
+                <li class="tl-pt">
+                  <div class="tl-bar"></div>
+                  <span
+                    >Designed and solved 12+ end-to-end problem statements and
+                    18 functional prototypes to guide student hackathons and 15+
+                    school innovation initiatives, ensuring feasibility and
+                    clarity</span
+                  >
+                </li>
+                <li class="tl-pt">
+                  <div class="tl-bar"></div>
+                  <span
+                    >Collaborated on requirement scoping, wrote concise
+                    documentation, and demonstrated working prototypes enabling
+                    30+ teams to extend solutions during hackathons</span
+                  >
+                </li>
+                <li class="tl-pt">
+                  <div class="tl-bar"></div>
+                  <span
+                    >Built 8 lightweight functional models using Python paired
+                    with HTML/CSS/JS interfaces to demonstrate user flows with
+                    60% less overall frontend complexity</span
+                  >
+                </li>
+                <li class="tl-pt">
+                  <div class="tl-bar"></div>
+                  <span
+                    >Integrated AI capabilities via Cohere Chat API and 10
+                    Microsoft Azure APIs; designed clean API wrappers, prompt
+                    flows, and error-handling pipelines</span
+                  >
+                </li>
+                <li class="tl-pt">
+                  <div class="tl-bar"></div>
+                  <span
+                    >Developed 5 automation pipelines using OpenCV and MediaPipe
+                    for perception and interaction tasks (capture,
+                    preprocessing, landmark-based logic), improving
+                    repeatability</span
+                  >
+                </li>
+                <li class="tl-pt">
+                  <div class="tl-bar"></div>
+                  <span
+                    >Implemented multimedia utility applications for video and
+                    audio processing, prioritising a higher degree of user
+                    control</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- UPDATE: Add more experience entries here following the same structure -->
+          <!-- Example:
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div class="tl-title">Your Role</div>
+            <div class="tl-period">Month Year – Month Year</div>
+          </div>
+          <div class="tl-org">Company Name</div>
+          <ul class="tl-pts">
+            <li class="tl-pt"><div class="tl-bar"></div><span>Achievement...</span></li>
+          </ul>
+        </div>
+      </div>
+      -->
+        </div>
+
+        <div class="sec-head" style="margin-top: 3rem">
+          <span class="sec-tag">// positions of responsibility</span>
+          <div class="sec-line"></div>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div
+              class="tl-dot"
+              style="
+                background: var(--purple);
+                box-shadow: 0 0 0 3px var(--purple-dim);
+              "
+            ></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div class="tl-title">Secretary, UG Academics</div>
+                <div class="tl-period">Jun 2023 – Apr 2024</div>
+              </div>
+              <div class="tl-org" style="color: var(--purple)">
+                AnC Council, IIT Kanpur
+              </div>
+              <ul class="tl-pts">
+                <li class="tl-pt">
+                  <div class="tl-bar"></div>
+                  <span
+                    >Designed the newly proposed version of Freshers' Handbook
+                    for IIT Kanpur</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div
+              class="tl-dot"
+              style="
+                background: var(--purple);
+                box-shadow: 0 0 0 3px var(--purple-dim);
+              "
+            ></div>
+            <div class="tl-card">
+              <div class="tl-header">
+                <div class="tl-title">Sports Secretary, Weightlifting</div>
+                <div class="tl-period">Jul 2023 – Apr 2024</div>
+              </div>
+              <div class="tl-org" style="color: var(--purple)">
+                GnS Council, IIT Kanpur
+              </div>
+              <ul class="tl-pts">
+                <li class="tl-pt">
+                  <div class="tl-bar"></div>
+                  <span
+                    >Organised competitions and workshops for 50+ students;
+                    managed scheduling and logistics for the weightlifting
+                    contingent</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- CODING PAGE -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="page" id="page-coding">
+      <div class="container">
+        <div class="sec-head">
+          <span class="sec-tag">// competitive coding</span>
+          <div class="sec-line"></div>
+        </div>
+
+        <div class="update-box">
+          Update these stats with your latest LeetCode and competitive coding
+          numbers. Your LeetCode profile: leetcode.com/u/aadityaap22
+        </div>
+
+        <!-- LeetCode Stats -->
+        <div class="sec-head">
+          <span class="sec-tag">// leetcode</span>
+          <div class="sec-line"></div>
+        </div>
+        <div class="coding-grid">
+          <!-- UPDATE: Replace placeholder numbers with your real LeetCode stats -->
+          <div class="coding-stat">
+            <div class="coding-stat-num" id="lc-total">—</div>
+            <div class="coding-stat-label">Problems Solved</div>
+            <div class="coding-stat-sub">leetcode.com/u/aadityaap22</div>
+          </div>
+          <div class="coding-stat">
+            <div
+              class="coding-stat-num"
+              style="color: var(--amber)"
+              id="lc-rank"
+            >
+              —
+            </div>
+            <div class="coding-stat-label">Global Ranking</div>
+            <div class="coding-stat-sub">Update with your rank</div>
+          </div>
+          <div class="coding-stat">
+            <div
+              class="coding-stat-num"
+              style="color: var(--teal)"
+              id="lc-streak"
+            >
+              —
+            </div>
+            <div class="coding-stat-label">Max Streak</div>
+            <div class="coding-stat-sub">Update with your streak</div>
+          </div>
+        </div>
+
+        <div class="skill-card" style="margin-bottom: 1.5rem">
+          <div class="skill-card-head">Difficulty Breakdown</div>
+          <div class="diff-bars">
+            <!-- UPDATE: Replace 0 widths and counts with your real numbers -->
+            <div class="diff-row">
+              <span class="diff-label easy">Easy</span>
+              <div class="diff-track">
+                <div
+                  class="diff-fill easy"
+                  style="width: 0"
+                  data-w="70%"
+                  id="diff-easy"
+                ></div>
+              </div>
+              <span class="diff-count" id="cnt-easy">— solved</span>
+            </div>
+            <div class="diff-row">
+              <span class="diff-label medium">Medium</span>
+              <div class="diff-track">
+                <div
+                  class="diff-fill medium"
+                  style="width: 0"
+                  data-w="50%"
+                  id="diff-med"
+                ></div>
+              </div>
+              <span class="diff-count" id="cnt-med">— solved</span>
+            </div>
+            <div class="diff-row">
+              <span class="diff-label hard">Hard</span>
+              <div class="diff-track">
+                <div
+                  class="diff-fill hard"
+                  style="width: 0"
+                  data-w="20%"
+                  id="diff-hard"
+                ></div>
+              </div>
+              <span class="diff-count" id="cnt-hard">— solved</span>
+            </div>
+          </div>
+          <div class="lang-grid" style="margin-top: 1.5rem">
+            <div class="lang-card">
+              <div class="lang-name">Python</div>
+              <div class="lang-pct">—</div>
+            </div>
+            <div class="lang-card">
+              <div class="lang-name">C++</div>
+              <div class="lang-pct">—</div>
+            </div>
+            <div class="lang-card">
+              <div class="lang-name">C</div>
+              <div class="lang-pct">—</div>
+            </div>
+            <div class="lang-card">
+              <div class="lang-name">SQL</div>
+              <div class="lang-pct">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GitHub contribution heatmap -->
+        <div class="sec-head">
+          <span class="sec-tag">// github activity</span>
+          <div class="sec-line"></div>
+        </div>
+        <div class="contrib-section">
+          <div class="contrib-grid" id="contrib-grid"></div>
+          <div class="contrib-legend">
+            less
+            <span class="cl-sq" style="background: var(--bg4)"></span>
+            <span class="cl-sq" style="background: #0d3d2a"></span>
+            <span class="cl-sq" style="background: #1a8055"></span>
+            <span class="cl-sq" style="background: #2dd4a0"></span>
+            more
+            <span style="margin-left: auto">github.com/Aadityaamlan-Panda</span>
+          </div>
+        </div>
+
+        <!-- CS Coursework -->
+        <div class="sec-head" style="margin-top: 2rem">
+          <span class="sec-tag">// cs / math coursework</span>
+          <div class="sec-line"></div>
+        </div>
+        <div class="skill-card">
+          <div class="tag-cloud">
+            <span class="tag tag-hi-purple">Intro to Machine Learning</span>
+            <span class="tag tag-hi-purple"
+              >Applied Probability & Statistics</span
+            >
+            <span class="tag">Computational Methods</span>
+            <span class="tag">Real Analysis</span>
+            <span class="tag">Ordinary Differential Equations</span>
+            <span class="tag">Several Variable Calculus</span>
+            <span class="tag">Linear Algebra</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- CONTACT PAGE -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="page" id="page-contact">
+      <div class="container">
+        <div class="sec-head">
+          <span class="sec-tag">// get in touch</span>
+          <div class="sec-line"></div>
+        </div>
+
+        <p
+          style="
+            font-size: 16px;
+            color: var(--t2);
+            max-width: 520px;
+            margin-bottom: 2.5rem;
+            line-height: 1.75;
+          "
+        >
+          Open to research collaborations, internships, and full-time roles
+          starting mid-2026. Feel free to reach out on any of the channels
+          below.
+        </p>
+
+        <div class="contact-grid">
+          <a class="contact-card" href="mailto:aadityaap22@iitk.ac.in">
+            <div class="cc-icon">✉</div>
+            <div class="cc-label">Email</div>
+            <div class="cc-value">aadityaap22@iitk.ac.in</div>
+            <div class="cc-sub">Preferred contact method</div>
+          </a>
+          <a
+            class="contact-card"
+            href="https://github.com/Aadityaamlan-Panda"
+            target="_blank"
+          >
+            <div class="cc-icon">⎆</div>
+            <div class="cc-label">GitHub</div>
+            <div class="cc-value">Aadityaamlan-Panda</div>
+            <div class="cc-sub">Code, projects, and repositories</div>
+          </a>
+          <a
+            class="contact-card"
+            href="https://linkedin.com/in/aadityaamlan-panda-a07403a1"
+            target="_blank"
+          >
+            <div class="cc-icon">in</div>
+            <div class="cc-label">LinkedIn</div>
+            <div class="cc-value">aadityaamlan-panda</div>
+            <div class="cc-sub">Professional network</div>
+          </a>
+          <a
+            class="contact-card"
+            href="https://leetcode.com/u/aadityaap22/"
+            target="_blank"
+          >
+            <div class="cc-icon">⌨</div>
+            <div class="cc-label">LeetCode</div>
+            <div class="cc-value">aadityaap22</div>
+            <div class="cc-sub">Competitive coding profile</div>
+          </a>
+          <div class="contact-card" style="cursor: default">
+            <div class="cc-icon">☏</div>
+            <div class="cc-label">Phone</div>
+            <div class="cc-value">+91-8093756736</div>
+            <div class="cc-sub">IIT Kanpur, Uttar Pradesh</div>
+          </div>
+          <!-- UPDATE: Add more social profiles as needed -->
+        </div>
+
+        <div
+          class="about-card"
+          style="
+            margin-top: 2rem;
+            background: var(--teal-bg);
+            border-color: var(--teal-dim);
+          "
+        >
+          <h3 style="color: var(--teal); margin-bottom: 0.5rem">
+            How to update this page
+          </h3>
+          <p style="font-size: 13px; color: var(--t2)">
+            This is a static HTML file hosted on GitHub Pages. To update: edit
+            <code
+              style="
+                font-family: var(--mono);
+                color: var(--teal);
+                font-size: 12px;
+              "
+              >index.html</code
+            >
+            directly and push to your
+            <code
+              style="
+                font-family: var(--mono);
+                color: var(--teal);
+                font-size: 12px;
+              "
+              >gh-pages</code
+            >
+            branch (or
+            <code
+              style="
+                font-family: var(--mono);
+                color: var(--teal);
+                font-size: 12px;
+              "
+              >main</code
+            >
+            if configured). To add projects, copy a
+            <code
+              style="
+                font-family: var(--mono);
+                color: var(--teal);
+                font-size: 12px;
+              "
+              >.proj-card</code
+            >
+            block in the Projects section and fill in details. Search for
+            <code
+              style="
+                font-family: var(--mono);
+                color: var(--teal);
+                font-size: 12px;
+              "
+              >UPDATE:</code
+            >
+            comments throughout the file for specific placeholders.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Built by <span>Aaditya Amlan Panda</span> · IIT Kanpur · 2026 ·
+        <a
+          href="https://github.com/Aadityaamlan-Panda"
+          target="_blank"
+          style="color: var(--teal); text-decoration: none"
+          >github.com/Aadityaamlan-Panda</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      // ── PAGE ROUTING ─────────────────────────────────────────────
+      function showPage(id) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".nav-tab")
+          .forEach((t) => t.classList.remove("active"));
+        document.getElementById("page-" + id).classList.add("active");
+        document.querySelectorAll(".nav-tab").forEach((t) => {
+          if (t.textContent.trim() === id) t.classList.add("active");
+        });
+        window.scrollTo(0, 0);
+        if (id === "skills") animateBars();
+        if (id === "coding") {
+          animateBars();
+          animateDiffBars();
+          buildContrib();
+        }
+      }
+
+      // ── SKILL BARS ───────────────────────────────────────────────
+      function animateBars() {
+        document
+          .querySelectorAll(".skill-bar-fill,.diff-fill")
+          .forEach((el) => {
+            const w = el.dataset.w;
+            if (w) {
+              setTimeout(() => {
+                el.style.width = w;
+              }, 100);
+            }
+          });
+      }
+
+      // ── DIFF BARS (coding page) ──────────────────────────────────
+      function animateDiffBars() {
+        ["easy", "med", "hard"].forEach((id) => {
+          const el = document.getElementById("diff-" + id);
+          if (el && el.dataset.w) {
+            setTimeout(() => {
+              el.style.width = el.dataset.w;
+            }, 100);
+          }
+        });
+      }
+
+      // ── PROJECT FILTERS ──────────────────────────────────────────
+      function filterProjects(cat, btn) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".proj-card").forEach((card) => {
+          if (cat === "all") {
+            card.classList.remove("hidden");
+          } else {
+            const cats = card.dataset.cat || "";
+            card.classList.toggle("hidden", !cats.split(" ").includes(cat));
+          }
+        });
+      }
+
+      // ── CONTRIBUTION HEATMAP ─────────────────────────────────────
+      function buildContrib() {
+        const grid = document.getElementById("contrib-grid");
+        if (!grid || grid.children.length > 0) return;
+        const levels = ["", "l1", "l2", "l3", "l4"];
+        const weights = [0.38, 0.28, 0.18, 0.1, 0.06];
+        for (let i = 0; i < 52 * 7; i++) {
+          const r = Math.random();
+          let cum = 0,
+            lv = "";
+          for (let j = 0; j < weights.length; j++) {
+            cum += weights[j];
+            if (r < cum) {
+              lv = levels[j];
+              break;
+            }
+          }
+          const d = document.createElement("div");
+          d.className = "cc " + lv;
+          grid.appendChild(d);
+        }
+      }
+
+      // ── INIT ─────────────────────────────────────────────────────
+      buildContrib();
+      document.addEventListener("DOMContentLoaded", () => {
+        // mobile nav: replace tabs with a simple select if needed
+        if (window.innerWidth <= 768) {
+          const tabsEl = document.querySelector(".nav-tabs");
+          if (tabsEl) {
+            const sel = document.createElement("select");
+            sel.style.cssText =
+              "font-family:var(--mono);font-size:12px;background:var(--bg3);color:var(--t1);border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer";
+            [
+              "home",
+              "about",
+              "skills",
+              "projects",
+              "experience",
+              "coding",
+              "contact",
+            ].forEach((p) => {
+              const o = document.createElement("option");
+              o.value = p;
+              o.textContent = p;
+              sel.appendChild(o);
+            });
+            sel.onchange = (e) => showPage(e.target.value);
+            tabsEl.parentNode.insertBefore(sel, tabsEl);
+            tabsEl.style.display = "none";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
