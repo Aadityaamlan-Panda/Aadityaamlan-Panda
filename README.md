@@ -44,5 +44,4 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-Aadityaamlan--Panda-181717?style=flat-square&logo=github)](https://github.com/Aadityaamlan-Panda)
 [![Email](https://img.shields.io/badge/Email-aadityaap22@iitk.ac.in-D85A30?style=flat-square&logo=gmail&logoColor=white)](mailto:aadityaap22@iitk.ac.in)
-![Phone](https://img.shields.io/badge/Phone-%2B91--8093756736-1D9E75?style=flat-square)
 ![Institute](https://img.shields.io/badge/IIT%20Kanpur-2022--2026-534AB7?style=flat-square)
