@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="520" viewBox="0 0 860 520">
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="508" viewBox="0 0 860 508">
 
   <defs>
     <style>
@@ -41,8 +41,8 @@
   </defs>
 
   <!-- BG -->
-  <rect width="860" height="520" class="bg-main"/>
-  <rect width="860" height="520" fill="url(#grid)"/>
+  <rect width="860" height="508" class="bg-main"/>
+  <rect width="860" height="508" fill="url(#grid)"/>
 
   <!-- ── AVATAR ── -->
   <circle cx="52" cy="52" r="36" fill="url(#avatarGrad)" opacity="0.15"/>
@@ -164,6 +164,6 @@
   <text x="518" y="492" font-family="'Courier New', monospace" font-size="10" fill="#7b6ff5">IIT Kanpur · 2022–2026</text>
 
   <!-- Footer -->
-  <text x="430" y="518" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" class="text-muted" opacity="0.6">⚗ Thermodynamics meets Software · Built with curiosity and caffeine</text>
+  <text x="430" y="505" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" class="text-muted" opacity="0.6">⚗ Thermodynamics meets Software · Built with curiosity and caffeine</text>
 
 </svg>
