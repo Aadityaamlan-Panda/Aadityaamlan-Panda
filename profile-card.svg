@@ -1,296 +1,169 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="1120" viewBox="0 0 860 1120">
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="520" viewBox="0 0 860 520">
+
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Syne:wght@700;800&amp;family=DM+Sans:wght@300;400&amp;display=swap');
+      /* ── DARK THEME (default) ── */
+      .bg-main   { fill: #0d1117; }
+      .bg-card   { fill: #161b22; }
+      .bg-surface{ fill: #21262d; }
+      .stroke-card   { stroke: #30363d; }
+      .stroke-divider{ stroke: #21262d; }
+      .text-primary  { fill: #e6edf3; }
+      .text-secondary{ fill: #c9d1d9; }
+      .text-muted    { fill: #7d8590; }
+      .avatar-text   { fill: #0d1117; }
+
+      /* ── LIGHT THEME ── */
+      @media (prefers-color-scheme: light) {
+        .bg-main   { fill: #ffffff; }
+        .bg-card   { fill: #f6f8fa; }
+        .bg-surface{ fill: #eaeef2; }
+        .stroke-card   { stroke: #d0d7de; }
+        .stroke-divider{ stroke: #d0d7de; }
+        .text-primary  { fill: #1f2328; }
+        .text-secondary{ fill: #1f2328; }
+        .text-muted    { fill: #57606a; }
+        .avatar-text   { fill: #ffffff; }
+      }
     </style>
 
-    <!-- Grid pattern -->
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(79,255,176,0.04)" stroke-width="1"/>
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4fffb008" stroke-width="1"/>
     </pattern>
-
-    <!-- Glow filter for avatar -->
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-
-    <!-- Avatar gradient -->
     <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#4fffb0"/>
       <stop offset="100%" stop-color="#7b6ff5"/>
     </linearGradient>
-
-    <!-- Top bar gradient -->
-    <linearGradient id="topBar" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#4fffb0"/>
-      <stop offset="50%" stop-color="#7b6ff5"/>
-      <stop offset="100%" stop-color="rgba(10,11,15,0)" stop-opacity="0"/>
-    </linearGradient>
-
-    <!-- Section line -->
     <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#4fffb0" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#1e2130" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#4fffb0" stop-opacity="0.5"/>
+      <stop offset="60%" stop-color="#4fffb0" stop-opacity="0"/>
     </linearGradient>
-
   </defs>
 
-  <!-- Background -->
-  <rect width="860" height="1120" fill="#0a0b0f" rx="12"/>
-  <rect width="860" height="1120" fill="url(#grid)" rx="12"/>
+  <!-- BG -->
+  <rect width="860" height="520" class="bg-main"/>
+  <rect width="860" height="520" fill="url(#grid)"/>
 
-  <!-- Border -->
-  <rect width="860" height="1120" fill="none" stroke="#1e2130" stroke-width="1" rx="12"/>
+  <!-- ── AVATAR ── -->
+  <circle cx="52" cy="52" r="36" fill="url(#avatarGrad)" opacity="0.15"/>
+  <circle cx="52" cy="52" r="32" fill="url(#avatarGrad)"/>
+  <text x="52" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" class="avatar-text">AP</text>
 
-  <!-- ── HEADER ── -->
-
-  <!-- Avatar glow -->
-  <circle cx="68" cy="76" r="44" fill="url(#avatarGrad)" opacity="0.18" filter="url(#glow)"/>
-  <!-- Avatar circle -->
-  <circle cx="68" cy="76" r="40" fill="url(#avatarGrad)"/>
-  <!-- Avatar initials -->
-  <text x="68" y="83" text-anchor="middle" font-family="'Syne', sans-serif" font-size="18" font-weight="800" fill="#0a0b0f">AP</text>
-
-  <!-- Name -->
-  <text x="128" y="58" font-family="'Syne', sans-serif" font-size="28" font-weight="800" fill="#e8eaf0" letter-spacing="-0.5">Aaditya Amlan Panda</text>
-
-  <!-- Handle -->
-  <text x="129" y="78" font-family="'DM Mono', monospace" font-size="11.5" fill="#4fffb0" letter-spacing="1">@Aadityaamlan-Panda</text>
-
-  <!-- Tagline -->
-  <text x="129" y="100" font-family="'DM Sans', sans-serif" font-size="12.5" fill="#6b7290">Chemical engineer who codes. Building process simulations,</text>
-  <text x="129" y="116" font-family="'DM Sans', sans-serif" font-size="12.5" fill="#6b7290">ML pipelines, NLP tools, and numerical solvers.</text>
+  <!-- ── NAME & HANDLE ── -->
+  <text x="102" y="38" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="bold" class="text-primary" letter-spacing="-0.3">Aaditya Amlan Panda</text>
+  <text x="103" y="56" font-family="'Courier New', Courier, monospace" font-size="11" fill="#4fffb0" letter-spacing="1">@Aadityaamlan-Panda</text>
+  <text x="103" y="73" font-family="Arial, sans-serif" font-size="11.5" class="text-muted">Chemical engineer who codes — process simulations, ML pipelines, NLP &amp; numerical solvers.</text>
 
   <!-- Institute badge -->
-  <rect x="129" y="126" width="228" height="22" rx="4" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="141" y="141" font-family="'DM Mono', monospace" font-size="10" fill="#7b6ff5" letter-spacing="0.5">🎓  IIT Kanpur · B.Tech · 2022–2026</text>
+  <rect x="103" y="81" width="222" height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/>
+  <text x="114" y="94" font-family="'Courier New', monospace" font-size="9.5" fill="#7b6ff5">🎓  IIT Kanpur · B.Tech ChE · 2022–2026</text>
 
   <!-- Divider -->
-  <rect x="28" y="168" width="804" height="1" fill="url(#lineGrad)"/>
+  <rect x="16" y="116" width="828" height="1" fill="url(#lineGrad)"/>
 
   <!-- ── DOMAIN TAGS ── -->
-  <!-- Process Simulation -->
-  <rect x="28" y="182" width="148" height="24" rx="3" fill="rgba(79,255,176,0.06)" stroke="rgba(79,255,176,0.28)" stroke-width="1"/>
-  <text x="104" y="198" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#4fffb0" letter-spacing="0.8">⚗  PROCESS SIM</text>
+  <rect x="16"  y="126" width="128" height="20" rx="3" fill="#4fffb010" stroke="#4fffb035" stroke-width="1"/>
+  <text x="80"  y="140" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#4fffb0" letter-spacing="0.8">⚗  PROCESS SIM</text>
 
-  <!-- Machine Learning -->
-  <rect x="184" y="182" width="138" height="24" rx="3" fill="rgba(123,111,245,0.06)" stroke="rgba(123,111,245,0.28)" stroke-width="1"/>
-  <text x="253" y="198" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#7b6ff5" letter-spacing="0.8">🤖  MACHINE LEARNING</text>
+  <rect x="152" y="126" width="140" height="20" rx="3" fill="#7b6ff510" stroke="#7b6ff535" stroke-width="1"/>
+  <text x="222" y="140" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#7b6ff5" letter-spacing="0.8">🤖  MACHINE LEARNING</text>
 
-  <!-- Numerical Methods -->
-  <rect x="330" y="182" width="148" height="24" rx="3" fill="rgba(255,123,84,0.06)" stroke="rgba(255,123,84,0.28)" stroke-width="1"/>
-  <text x="404" y="198" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#ff7b54" letter-spacing="0.8">🧮  NUMERICAL METHODS</text>
+  <rect x="300" y="126" width="150" height="20" rx="3" fill="#ff7b5410" stroke="#ff7b5435" stroke-width="1"/>
+  <text x="375" y="140" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#ff7b54" letter-spacing="0.8">🧮  NUMERICAL METHODS</text>
 
-  <!-- NLP / AI -->
-  <rect x="486" y="182" width="100" height="24" rx="3" fill="rgba(84,197,255,0.06)" stroke="rgba(84,197,255,0.28)" stroke-width="1"/>
-  <text x="536" y="198" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#54c5ff" letter-spacing="0.8">🗣  NLP / AI</text>
+  <rect x="458" y="126" width="96" height="20" rx="3" fill="#54c5ff10" stroke="#54c5ff35" stroke-width="1"/>
+  <text x="506" y="140" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#54c5ff" letter-spacing="0.8">🗣  NLP / AI</text>
 
-  <!-- Control Systems -->
-  <rect x="594" y="182" width="128" height="24" rx="3" fill="rgba(84,197,255,0.06)" stroke="rgba(84,197,255,0.28)" stroke-width="1"/>
-  <text x="658" y="198" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#54c5ff" letter-spacing="0.8">⚙  CONTROL SYSTEMS</text>
+  <rect x="562" y="126" width="128" height="20" rx="3" fill="#54c5ff10" stroke="#54c5ff35" stroke-width="1"/>
+  <text x="626" y="140" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#54c5ff" letter-spacing="0.8">⚙  CONTROL SYSTEMS</text>
 
   <!-- Divider -->
-  <rect x="28" y="220" width="804" height="1" fill="#1e2130"/>
+  <rect x="16" y="156" width="828" height="1" class="stroke-divider" stroke-width="1" fill="none"/>
+  <line x1="16" y1="156" x2="844" y2="156" class="bg-surface" stroke-width="1"/>
 
-  <!-- ── SECTION: LANGUAGES & TOOLS ── -->
-  <text x="28" y="246" font-family="'DM Mono', monospace" font-size="9" fill="#6b7290" letter-spacing="2">LANGUAGES &amp; TOOLS</text>
-  <rect x="200" y="242" width="632" height="1" fill="#1e2130"/>
+  <!-- ── LANGUAGES & TOOLS ── -->
+  <text x="16" y="176" font-family="'Courier New', monospace" font-size="8.5" class="text-muted" letter-spacing="2">LANGUAGES &amp; TOOLS</text>
+  <line x1="188" y1="172" x2="844" y2="172" stroke-width="1" class="bg-surface"/>
 
-  <!-- Row of lang pills -->
-  <!-- Python -->
-  <rect x="28" y="256" width="62" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="59" y="271" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Python</text>
+  <rect x="16"  y="184" width="56"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="44"  y="197" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Python</text>
+  <rect x="80"  y="184" width="50"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="105" y="197" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">C / C++</text>
+  <rect x="138" y="184" width="58"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="167" y="197" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">MATLAB</text>
+  <rect x="204" y="184" width="38"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="223" y="197" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">SQL</text>
+  <rect x="250" y="184" width="48"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="274" y="197" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">LaTeX</text>
+  <rect x="306" y="184" width="36"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="324" y="197" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Git</text>
+  <rect x="350" y="184" width="84"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="392" y="197" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">HTML/CSS/JS</text>
+  <rect x="442" y="184" width="62"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="473" y="197" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Simulink</text>
 
-  <!-- C/C++ -->
-  <rect x="98" y="256" width="52" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="124" y="271" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">C / C++</text>
+  <!-- ── PROCESS & SIMULATION ── -->
+  <text x="16" y="226" font-family="'Courier New', monospace" font-size="8.5" class="text-muted" letter-spacing="2">PROCESS &amp; SIMULATION</text>
+  <line x1="210" y1="222" x2="844" y2="222" stroke-width="1" class="bg-surface"/>
 
-  <!-- MATLAB -->
-  <rect x="158" y="256" width="60" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="188" y="271" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">MATLAB</text>
+  <rect x="16"  y="234" width="78"  height="19" rx="3" fill="#4fffb008" stroke="#4fffb030" stroke-width="1"/><text x="55"  y="247" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" fill="#4fffb0">Aspen Plus</text>
+  <rect x="102" y="234" width="72"  height="19" rx="3" fill="#4fffb008" stroke="#4fffb030" stroke-width="1"/><text x="138" y="247" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" fill="#4fffb0">Aspen EDR</text>
+  <rect x="182" y="234" width="94"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="229" y="247" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Pinch Analysis</text>
+  <rect x="284" y="234" width="110" height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="339" y="247" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">TEMA HX Design</text>
+  <rect x="402" y="234" width="70"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="437" y="247" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">PFR / CSTR</text>
+  <rect x="480" y="234" width="76"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="518" y="247" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Distillation</text>
+  <rect x="564" y="234" width="84"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="606" y="247" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Cogeneration</text>
 
-  <!-- SQL -->
-  <rect x="226" y="256" width="42" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="247" y="271" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">SQL</text>
+  <!-- ── PYTHON LIBRARIES ── -->
+  <text x="16" y="276" font-family="'Courier New', monospace" font-size="8.5" class="text-muted" letter-spacing="2">PYTHON LIBRARIES</text>
+  <line x1="186" y1="272" x2="844" y2="272" stroke-width="1" class="bg-surface"/>
 
-  <!-- LaTeX -->
-  <rect x="276" y="256" width="52" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="302" y="271" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">LaTeX</text>
+  <rect x="16"  y="284" width="58"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="45"  y="297" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">NumPy</text>
+  <rect x="82"  y="284" width="54"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="109" y="297" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Pandas</text>
+  <rect x="144" y="284" width="76"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="182" y="297" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Matplotlib</text>
+  <rect x="228" y="284" width="84"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="270" y="297" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Scikit-learn</text>
+  <rect x="320" y="284" width="44"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="342" y="297" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">NLTK</text>
+  <rect x="372" y="284" width="64"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="404" y="297" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Streamlit</text>
+  <rect x="444" y="284" width="60"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="474" y="297" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">OpenCV</text>
+  <rect x="512" y="284" width="74"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="549" y="297" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">MediaPipe</text>
+  <rect x="594" y="284" width="70"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="629" y="297" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">NetworkX</text>
+  <rect x="672" y="284" width="46"  height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/><text x="695" y="297" text-anchor="middle" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">PyDub</text>
 
-  <!-- Git -->
-  <rect x="336" y="256" width="38" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="355" y="271" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Git</text>
+  <!-- ── MATLAB & NUMERICAL ── -->
+  <text x="16" y="330" font-family="'Courier New', monospace" font-size="8.5" class="text-muted" letter-spacing="2">MATLAB &amp; NUMERICAL METHODS</text>
+  <line x1="272" y1="326" x2="844" y2="326" stroke-width="1" class="bg-surface"/>
 
-  <!-- HTML/CSS/JS -->
-  <rect x="382" y="256" width="88" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="426" y="271" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">HTML/CSS/JS</text>
+  <rect x="16"  y="340" width="190" height="92" rx="5" class="bg-card" stroke-width="1" stroke="#21262d"/>
+  <rect x="16"  y="340" width="190" height="2"  rx="1" fill="#4fffb0" opacity="0.6"/>
+  <text x="28" y="356" font-family="'Courier New', monospace" font-size="8" fill="#4fffb0" letter-spacing="1.5">SOLVERS</text>
+  <text x="28" y="374" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">ode45 / ode78 / ode15s</text>
+  <text x="28" y="392" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">bvp4c · pdepe</text>
 
-  <!-- Simulink -->
-  <rect x="478" y="256" width="66" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="511" y="271" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Simulink</text>
+  <rect x="216" y="340" width="190" height="92" rx="5" class="bg-card" stroke-width="1" stroke="#21262d"/>
+  <rect x="216" y="340" width="190" height="2"  rx="1" fill="#7b6ff5" opacity="0.6"/>
+  <text x="228" y="356" font-family="'Courier New', monospace" font-size="8" fill="#7b6ff5" letter-spacing="1.5">OPTIMIZATION</text>
+  <text x="228" y="374" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">fmincon</text>
+  <text x="228" y="392" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">lsqnonlin</text>
 
-  <!-- ── SECTION: PROCESS & SIMULATION ── -->
-  <text x="28" y="308" font-family="'DM Mono', monospace" font-size="9" fill="#6b7290" letter-spacing="2">PROCESS &amp; SIMULATION</text>
-  <rect x="224" y="304" width="608" height="1" fill="#1e2130"/>
+  <rect x="416" y="340" width="190" height="92" rx="5" class="bg-card" stroke-width="1" stroke="#21262d"/>
+  <rect x="416" y="340" width="190" height="2"  rx="1" fill="#ff7b54" opacity="0.6"/>
+  <text x="428" y="356" font-family="'Courier New', monospace" font-size="8" fill="#ff7b54" letter-spacing="1.5">METHODS</text>
+  <text x="428" y="374" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">FDM / MOL · RK4</text>
 
-  <rect x="28" y="318" width="82" height="22" rx="3" fill="rgba(79,255,176,0.06)" stroke="rgba(79,255,176,0.2)" stroke-width="1"/>
-  <text x="69" y="333" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#4fffb0" opacity="0.9">Aspen Plus</text>
+  <rect x="616" y="340" width="228" height="92" rx="5" class="bg-card" stroke-width="1" stroke="#21262d"/>
+  <rect x="616" y="340" width="228" height="2"  rx="1" fill="#54c5ff" opacity="0.6"/>
+  <text x="628" y="356" font-family="'Courier New', monospace" font-size="8" fill="#54c5ff" letter-spacing="1.5">CONTROL TUNING</text>
+  <text x="628" y="374" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Ziegler-Nichols</text>
+  <text x="628" y="392" font-family="'Courier New', monospace" font-size="9.5" class="text-secondary">Tyreus-Luyben · IMC</text>
 
-  <rect x="118" y="318" width="76" height="22" rx="3" fill="rgba(79,255,176,0.06)" stroke="rgba(79,255,176,0.2)" stroke-width="1"/>
-  <text x="156" y="333" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#4fffb0" opacity="0.9">Aspen EDR</text>
+  <!-- ── CONTACT ── -->
+  <line x1="16" y1="450" x2="844" y2="450" stroke-width="1" class="bg-surface"/>
 
-  <rect x="202" y="318" width="96" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="250" y="333" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Pinch Analysis</text>
+  <rect x="16"  y="462" width="210" height="38" rx="5" class="bg-card stroke-card" stroke-width="1"/>
+  <text x="36"  y="477" font-family="'Courier New', monospace" font-size="9"  class="text-muted">GitHub</text>
+  <text x="36"  y="492" font-family="'Courier New', monospace" font-size="10" class="text-primary">Aadityaamlan-Panda</text>
 
-  <rect x="306" y="318" width="112" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="362" y="333" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">TEMA HX Design</text>
+  <rect x="236" y="462" width="252" height="38" rx="5" class="bg-card stroke-card" stroke-width="1"/>
+  <text x="256" y="477" font-family="'Courier New', monospace" font-size="9"  class="text-muted">Email</text>
+  <text x="256" y="492" font-family="'Courier New', monospace" font-size="10" class="text-primary">aadityaap22@iitk.ac.in</text>
 
-  <rect x="426" y="318" width="72" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="462" y="333" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">PFR / CSTR</text>
-
-  <rect x="506" y="318" width="80" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="546" y="333" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Distillation</text>
-
-  <rect x="594" y="318" width="90" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="639" y="333" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Cogeneration</text>
-
-  <!-- ── SECTION: PYTHON LIBRARIES ── -->
-  <text x="28" y="378" font-family="'DM Mono', monospace" font-size="9" fill="#6b7290" letter-spacing="2">PYTHON LIBRARIES</text>
-  <rect x="196" y="374" width="636" height="1" fill="#1e2130"/>
-
-  <!-- Row 1 -->
-  <rect x="28" y="388" width="60" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="58" y="403" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">NumPy</text>
-
-  <rect x="96" y="388" width="58" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="125" y="403" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Pandas</text>
-
-  <rect x="162" y="388" width="80" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="202" y="403" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Matplotlib</text>
-
-  <rect x="250" y="388" width="90" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="295" y="403" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Scikit-learn</text>
-
-  <rect x="348" y="388" width="46" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="371" y="403" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">NLTK</text>
-
-  <rect x="402" y="388" width="68" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="436" y="403" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Streamlit</text>
-
-  <!-- Row 2 -->
-  <rect x="28" y="418" width="64" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="60" y="433" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">OpenCV</text>
-
-  <rect x="100" y="418" width="80" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="140" y="433" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">MediaPipe</text>
-
-  <rect x="188" y="418" width="76" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="226" y="433" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">NetworkX</text>
-
-  <rect x="272" y="418" width="48" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="296" y="433" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Pyvis</text>
-
-  <rect x="328" y="418" width="68" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="362" y="433" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">Requests</text>
-
-  <rect x="404" y="418" width="56" height="22" rx="3" fill="#111318" stroke="#1e2130" stroke-width="1"/>
-  <text x="432" y="433" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#e8eaf0" opacity="0.8">PyDub</text>
-
-  <!-- ── SECTION: MATLAB & NUMERICAL ── -->
-  <text x="28" y="476" font-family="'DM Mono', monospace" font-size="9" fill="#6b7290" letter-spacing="2">MATLAB &amp; NUMERICAL METHODS</text>
-  <rect x="280" y="472" width="552" height="1" fill="#1e2130"/>
-
-  <!-- 4 columns -->
-  <!-- Col 1: Solvers -->
-  <rect x="28" y="488" width="186" height="110" rx="6" fill="#13151d" stroke="#1e2130" stroke-width="1"/>
-  <rect x="28" y="488" width="186" height="2" rx="1" fill="rgba(79,255,176,0.5)"/>
-  <text x="42" y="506" font-family="'DM Mono', monospace" font-size="9" fill="#4fffb0" letter-spacing="1.5">SOLVERS</text>
-  <text x="42" y="526" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0" opacity="0.75">ode45 / ode78 / ode15s</text>
-  <text x="42" y="546" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0" opacity="0.75">bvp4c</text>
-  <text x="42" y="566" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0" opacity="0.75">pdepe</text>
-
-  <!-- Col 2: Optimization -->
-  <rect x="222" y="488" width="186" height="110" rx="6" fill="#13151d" stroke="#1e2130" stroke-width="1"/>
-  <rect x="222" y="488" width="186" height="2" rx="1" fill="rgba(123,111,245,0.5)"/>
-  <text x="236" y="506" font-family="'DM Mono', monospace" font-size="9" fill="#7b6ff5" letter-spacing="1.5">OPTIMIZATION</text>
-  <text x="236" y="526" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0" opacity="0.75">fmincon</text>
-  <text x="236" y="546" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0" opacity="0.75">lsqnonlin</text>
-
-  <!-- Col 3: Methods -->
-  <rect x="416" y="488" width="186" height="110" rx="6" fill="#13151d" stroke="#1e2130" stroke-width="1"/>
-  <rect x="416" y="488" width="186" height="2" rx="1" fill="rgba(255,123,84,0.5)"/>
-  <text x="430" y="506" font-family="'DM Mono', monospace" font-size="9" fill="#ff7b54" letter-spacing="1.5">METHODS</text>
-  <text x="430" y="526" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0" opacity="0.75">FDM / MOL</text>
-  <text x="430" y="546" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0" opacity="0.75">RK4</text>
-
-  <!-- Col 4: Control Tuning -->
-  <rect x="610" y="488" width="222" height="110" rx="6" fill="#13151d" stroke="#1e2130" stroke-width="1"/>
-  <rect x="610" y="488" width="222" height="2" rx="1" fill="rgba(84,197,255,0.5)"/>
-  <text x="624" y="506" font-family="'DM Mono', monospace" font-size="9" fill="#54c5ff" letter-spacing="1.5">CONTROL TUNING</text>
-  <text x="624" y="526" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0" opacity="0.75">Ziegler-Nichols</text>
-  <text x="624" y="546" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0" opacity="0.75">Tyreus-Luyben</text>
-  <text x="624" y="566" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0" opacity="0.75">IMC Tuning</text>
-
-  <!-- ── SECTION: QUICK SNAPSHOT ── -->
-  <rect x="28" y="628" width="804" height="1" fill="#1e2130"/>
-  <text x="28" y="654" font-family="'DM Mono', monospace" font-size="9" fill="#6b7290" letter-spacing="2">QUICK SNAPSHOT</text>
-  <rect x="198" y="650" width="634" height="1" fill="#1e2130"/>
-
-  <!-- Code card -->
-  <rect x="28" y="666" width="804" height="172" rx="8" fill="#13151d" stroke="#1e2130" stroke-width="1"/>
-  <rect x="28" y="666" width="804" height="2" rx="1" fill="url(#topBar)"/>
-
-  <text x="52" y="700" font-family="'DM Mono', monospace" font-size="11.5" fill="#7b6ff5">name</text>
-  <text x="186" y="700" font-family="'DM Mono', monospace" font-size="11.5" fill="#1e2130">=</text>
-  <text x="210" y="700" font-family="'DM Mono', monospace" font-size="11.5" fill="#e8eaf0" opacity="0.75">"Aaditya Amlan Panda"</text>
-
-  <text x="52" y="722" font-family="'DM Mono', monospace" font-size="11.5" fill="#7b6ff5">role</text>
-  <text x="186" y="722" font-family="'DM Mono', monospace" font-size="11.5" fill="#1e2130">=</text>
-  <text x="210" y="722" font-family="'DM Mono', monospace" font-size="11.5" fill="#e8eaf0" opacity="0.75">"Chemical Engineer × Software Developer"</text>
-
-  <text x="52" y="744" font-family="'DM Mono', monospace" font-size="11.5" fill="#7b6ff5">institute</text>
-  <text x="186" y="744" font-family="'DM Mono', monospace" font-size="11.5" fill="#1e2130">=</text>
-  <text x="210" y="744" font-family="'DM Mono', monospace" font-size="11.5" fill="#e8eaf0" opacity="0.75">"IIT Kanpur · Final Year B.Tech"</text>
-
-  <text x="52" y="766" font-family="'DM Mono', monospace" font-size="11.5" fill="#7b6ff5">focus</text>
-  <text x="186" y="766" font-family="'DM Mono', monospace" font-size="11.5" fill="#1e2130">=</text>
-  <text x="210" y="766" font-family="'DM Mono', monospace" font-size="11.5" fill="#e8eaf0" opacity="0.75">["Process Sim", "ML", "NLP", "Numerical Solvers"]</text>
-
-  <text x="52" y="788" font-family="'DM Mono', monospace" font-size="11.5" fill="#7b6ff5">bridging</text>
-  <text x="186" y="788" font-family="'DM Mono', monospace" font-size="11.5" fill="#1e2130">=</text>
-  <text x="210" y="788" font-family="'DM Mono', monospace" font-size="11.5" fill="#e8eaf0" opacity="0.75">"Thermodynamics  ↔  Software Engineering"</text>
-
-  <text x="52" y="820" font-family="'DM Mono', monospace" font-size="11.5" fill="#7b6ff5">email</text>
-  <text x="186" y="820" font-family="'DM Mono', monospace" font-size="11.5" fill="#1e2130">=</text>
-  <text x="210" y="820" font-family="'DM Mono', monospace" font-size="11.5" fill="#4fffb0" opacity="0.9">"aadityaap22@iitk.ac.in"</text>
-
-  <!-- ── SECTION: CONTACT ── -->
-  <rect x="28" y="862" width="804" height="1" fill="#1e2130"/>
-  <text x="28" y="888" font-family="'DM Mono', monospace" font-size="9" fill="#6b7290" letter-spacing="2">CONTACT</text>
-  <rect x="116" y="884" width="716" height="1" fill="#1e2130"/>
-
-  <!-- GitHub button -->
-  <rect x="28" y="900" width="220" height="42" rx="6" fill="#13151d" stroke="#1e2130" stroke-width="1"/>
-  <!-- GitHub icon path approximation -->
-  <circle cx="56" cy="921" r="10" fill="none" stroke="#e8eaf0" stroke-width="1.5" opacity="0.7"/>
-  <text x="74" y="917" font-family="'DM Mono', monospace" font-size="10" fill="#6b7290">GitHub</text>
-  <text x="74" y="932" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0">Aadityaamlan-Panda</text>
-
-  <!-- Email button -->
-  <rect x="260" y="900" width="260" height="42" rx="6" fill="#13151d" stroke="#1e2130" stroke-width="1"/>
-  <rect x="278" y="914" width="16" height="14" rx="2" fill="none" stroke="#e8eaf0" stroke-width="1.4" opacity="0.7"/>
-  <polyline points="278,914 286,922 294,914" fill="none" stroke="#e8eaf0" stroke-width="1.4" opacity="0.7"/>
-  <text x="306" y="917" font-family="'DM Mono', monospace" font-size="10" fill="#6b7290">Email</text>
-  <text x="306" y="932" font-family="'DM Mono', monospace" font-size="10.5" fill="#e8eaf0">aadityaap22@iitk.ac.in</text>
-
-  <!-- Institute tag -->
-  <rect x="538" y="900" width="160" height="42" rx="6" fill="#13151d" stroke="#1e2130" stroke-width="1"/>
-  <text x="618" y="917" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#6b7290">Institute</text>
-  <text x="618" y="932" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10.5" fill="#7b6ff5">IIT Kanpur · 2022–2026</text>
+  <rect x="498" y="462" width="200" height="38" rx="5" class="bg-card stroke-card" stroke-width="1"/>
+  <text x="518" y="477" font-family="'Courier New', monospace" font-size="9"  class="text-muted">Institute</text>
+  <text x="518" y="492" font-family="'Courier New', monospace" font-size="10" fill="#7b6ff5">IIT Kanpur · 2022–2026</text>
 
   <!-- Footer -->
-  <rect x="28" y="974" width="804" height="1" fill="#1e2130"/>
-  <text x="430" y="1000" text-anchor="middle" font-family="'DM Mono', monospace" font-size="10" fill="#6b7290" opacity="0.6">⚗ Thermodynamics meets Software · Built with curiosity and caffeine</text>
+  <text x="430" y="518" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" class="text-muted" opacity="0.6">⚗ Thermodynamics meets Software · Built with curiosity and caffeine</text>
 
 </svg>
