@@ -55,7 +55,7 @@
   <text x="103" y="73" font-family="Arial, sans-serif" font-size="11.5" class="text-muted">Chemical engineer who codes — process simulations, ML pipelines, NLP &amp; numerical solvers.</text>
 
   <!-- Institute badge -->
-  <rect x="103" y="81" width="222" height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/>
+  <rect x="104" y="81" width="232" height="19" rx="3" class="bg-card stroke-card" stroke-width="1"/>
   <text x="114" y="94" font-family="'Courier New', monospace" font-size="9.5" fill="#7b6ff5">🎓  IIT Kanpur · B.Tech ChE · 2022–2026</text>
 
   <!-- Divider -->
