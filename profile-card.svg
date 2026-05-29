@@ -69,7 +69,7 @@
   <text x="222" y="140" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#7b6ff5" letter-spacing="0.8">🤖  MACHINE LEARNING</text>
 
   <rect x="300" y="126" width="150" height="20" rx="3" fill="#ff7b5410" stroke="#ff7b5435" stroke-width="1"/>
-  <text x="375" y="140" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#ff7b54" letter-spacing="0.8">🧮  NUMERICAL METHODS</text>
+  <text x="375" y="140" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#ff7b54" letter-spacing="0.8">🧮  DS / ALGORITHMS</text>
 
   <rect x="458" y="126" width="96" height="20" rx="3" fill="#54c5ff10" stroke="#54c5ff35" stroke-width="1"/>
   <text x="506" y="140" text-anchor="middle" font-family="'Courier New', monospace" font-size="9" fill="#54c5ff" letter-spacing="0.8">🗣  NLP / AI</text>
